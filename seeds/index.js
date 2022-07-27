@@ -4,12 +4,17 @@ const ToDo = require("../models/toDo");
 const db = require("../config/mongoose");
 const Task = require("../models/task");
 const Project = require("../models/project");
-const Admin= require("../models/admin")
+const Admin = require("../models/admin")
+const Feedback = require("../models/feedback");
+const Question = require("../models/question");
+const Response = require("../models/response");
 
 const users = require("./data").users;
 const toDoListPvt = require("./data").todoDataPvt;
 const projects = require("./data").returnProjects;
-const admins=require("./data").admins;
+const admins = require("./data").admins;
+const feedback = require("./data").feedback;
+const questions = require("./data").questions;
 
 const saveUsers = async (users) => {
   await User.deleteMany({});
@@ -77,11 +82,27 @@ const saveAdmins=async(admins)=>{
   console.log("Saved Admins")
 }
 
+
+
+const saveFeedback = async (feedback,questions) => {
+  await Feedback.deleteMany({});
+  await Question.deleteMany({});
+  await Response.deleteMany({});
+  const newFeedback = new Feedback(feedback);
+  for (let i = 0; i < questions.length; i++) {
+    const question = new Question(questions[i]);
+    const newQuestion=await question.save();
+    newFeedback.questions.push(newQuestion._id);
+  }
+  newFeedback.save();
+}
+
 const seed = async () => {
   await saveUsers(users);
   await saveToDoList(toDoListPvt);
   await saveProjects(projects);
   await saveAdmins(admins);
+  await saveFeedback(feedback,questions);
 }
 
 seed();

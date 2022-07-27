@@ -152,3 +152,31 @@ module.exports.admins=[
         avatar: "./uploads/users/avatars/avatar-1.jpeg",
     },
 ]
+
+module.exports.questions = [
+    {
+        question: "Rate the behavior of the manager",
+        type : "rating", 
+    },
+    {
+        question: "Rate the team coordination",
+        type : "rating", 
+    },
+    {
+        question: "Rate the work distribution among the team",
+        type : "rating", 
+    },
+    {
+        question: "Rate the ease of communication with the team and manager",
+        type : "rating", 
+    },
+    {
+        question: "Was the deadline sufficient?",
+        type: "binary"
+    }
+]
+
+module.exports.feedback = 
+    {
+        name: "General Information about Users"
+    }

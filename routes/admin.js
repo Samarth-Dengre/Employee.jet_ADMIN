@@ -8,6 +8,7 @@ router.post(`/login` ,  passport.authenticate( `local` , {
 }) , adminController.login);
 
 // Admin logout
-router.get(`/logout` , adminController.logout);
+router.get(`/logout`, adminController.logout);
+
 
 module.exports = router;
