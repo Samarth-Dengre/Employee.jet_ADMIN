@@ -18,7 +18,13 @@ const feedbackSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    isFilledBy: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: `User`
+        }
+    ]
 }, {
     // Keep the created and updated time
     timestamps: true

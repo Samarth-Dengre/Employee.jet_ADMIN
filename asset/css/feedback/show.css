@@ -1,0 +1,18 @@
+.container{
+    width: 84.2%!important;
+    display: block !important;
+}
+
+.card{
+    margin:1rem;
+    margin-bottom: 0rem;
+    height:fit-content;
+}
+
+.list-group{
+    margin-bottom: 0rem;
+}
+
+/* #responses{
+    display: none;
+} */

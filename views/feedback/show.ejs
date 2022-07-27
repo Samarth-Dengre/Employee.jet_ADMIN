@@ -1,3 +1,41 @@
+<script src="/js/feedback/show.js"></script>
+<link href="/css/feedback/show.css" rel="stylesheet" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.js"></script>
+
 <div class="container">
+    <br><br><br><br<br><br>
+    <%=feedback.questions[0].responses%>
+    <% for(let question of feedback.questions){%>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><%=question.question%></h5>
+            <p class="card-text">Average:4.5/5</p>
+            <a href="#" id="showResponses" class="btn btn-primary">Show Details</a>
+        </div>
+        <ul id="responses" class="list-group">
+            <% for(let response of question.responses){%>
+                <li class="list-group-item">
+                    <%=response.byEmpObjId.name%> - <%=response.response%>
+                </li>
+                <%} %>
+            <!-- <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li> -->
+          </ul>
+    </div>
+    
+    <!-- <div class="card">
+        <div class="card-header">
+            Featured
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div> -->
+    <% } %>
     <%=feedback%>
 </div>

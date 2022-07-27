@@ -3,7 +3,9 @@
     flex-wrap: wrap;
 
 }
-
+.container{
+    width: 84.2%!important;
+}
 .card{
     margin:20px;
 }

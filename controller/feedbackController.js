@@ -3,6 +3,8 @@ const ToDo = require('../models/toDo');
 const Task = require('../models/task');
 const Admin = require(`../models/admin`);
 const Feedback = require('../models/feedback');
+const Question = require('../models/question');
+const Response = require('../models/response');
 
 module.exports.renderFeedback = async (req , res)=>{
     if(!req.user){
@@ -48,7 +50,8 @@ module.exports.showFeedback = async (req, res) => {
             title: 'Employee.Jet | Admin'
         });
     }
-    const feedback = await Feedback.findById(req.params.id);
+    const feedback = await Feedback.findById(req.params.id).populate({ path: 'questions', populate: { path: 'responses', populate: { path: 'byEmpObjId' } } });
+    console.log(feedback);
     const admin = await Admin.findById(req.user._id);
     return res.render('feedback/show', {
         layout: 'blank_layout',

@@ -181,3 +181,13 @@ module.exports.feedback =
     name: "General Information about Users",
         description: "This feedback is used to record and analyze the general information about our employees' performance",
     }
+
+
+module.exports.responses = async () => {
+    return [
+        {
+            byEmpObjId: await getId("5"),
+            response:"5"
+        }
+    ]
+}

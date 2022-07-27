@@ -15,6 +15,7 @@ const projects = require("./data").returnProjects;
 const admins = require("./data").admins;
 const feedback = require("./data").feedback;
 const questions = require("./data").questions;
+const responses=require("./data").responses;
 
 const saveUsers = async (users) => {
   await User.deleteMany({});
@@ -89,12 +90,17 @@ const saveFeedback = async (feedback,questions) => {
   await Question.deleteMany({});
   await Response.deleteMany({});
   const newFeedback = new Feedback(feedback);
+  const responses2 = await responses();
   for (let i = 0; i < questions.length; i++) {
+    const newResponse = new Response(responses2[0]);
+    await newResponse.save();
     const question = new Question(questions[i]);
+    question.responses.push(newResponse._id);
     const newQuestion=await question.save();
     newFeedback.questions.push(newQuestion._id);
   }
   newFeedback.save();
+  console.log("Saved Feedback")
 }
 
 const seed = async () => {
