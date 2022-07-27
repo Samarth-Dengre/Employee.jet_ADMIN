@@ -5,12 +5,20 @@ const feedbackSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        required: true
+    },
     questions: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: `Question`
         }
     ],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 }, {
     // Keep the created and updated time
     timestamps: true

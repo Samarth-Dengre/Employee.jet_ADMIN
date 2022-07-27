@@ -178,5 +178,6 @@ module.exports.questions = [
 
 module.exports.feedback = 
     {
-        name: "General Information about Users"
+    name: "General Information about Users",
+        description: "This feedback is used to record and analyze the general information about our employees' performance",
     }
