@@ -7,4 +7,7 @@ router.post(`/login` ,  passport.authenticate( `local` , {
     failureRedirect: `/`
 }) , adminController.login);
 
+// Admin logout
+router.get(`/logout` , adminController.logout);
+
 module.exports = router;
