@@ -12,7 +12,7 @@ let storage = multer.diskStorage({
     }
 });
 
-const userSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true
@@ -52,9 +52,9 @@ const userSchema = new mongoose.Schema({
 });
 
 // Creating static functions
-userSchema.statics.uploadAvatar = multer({storage: storage}).single(`avatar`); //.single(``) implies that only a single file will uploaded for the field name avatar
-userSchema.statics.avatarPath = AVATAR_PATH;  //We made AVATAR_PATH global
+adminSchema.statics.uploadAvatar = multer({storage: storage}).single(`avatar`); //.single(``) implies that only a single file will uploaded for the field name avatar
+adminSchema.statics.avatarPath = AVATAR_PATH;  //We made AVATAR_PATH global
 
-const User = mongoose.model(`User` , userSchema);
+const Admin = mongoose.model(`Admin` , adminSchema);
 
-module.exports = User;
+module.exports = Admin;

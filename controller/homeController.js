@@ -7,24 +7,18 @@ module.exports.home = async (req , res)=>{
     if(!req.user){
         return res.render('landingPage' , {
             layout: 'blank_layout',
-            title: 'Employee.Jet'
+            title: 'Employee.Jet | Admin'
         });
     }
 
     
     //populate the user object with the toDoList and tasks
-    const user = await User.findById(req.user._id).populate({path: 'pvtToDoList' , populate: {path: 'tasks',model: 'Task'}});
+    const admin = await Admin.findById(req.user._id);
     return res.render('home', {
         layout: 'blank_layout',
-        title: 'Employee.Jet | Home',
-        tasks: (user.pvtToDoList == null) ? null : user.pvtToDoList.tasks,
-        onPage: 'dashboard'
+        title: 'Employee.Jet | ADMIN | Home'
+        // tasks: (user.pvtToDoList == null) ? null : user.pvtToDoList.tasks,
+        // onPage: 'dashboard'
     });
 }
 
-
-
-// Admin login
-module.exports.login = async (req , res)=>{
-
-}

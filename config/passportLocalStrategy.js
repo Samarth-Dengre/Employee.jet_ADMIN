@@ -1,6 +1,6 @@
 const passport = require(`passport`);
 const localStrategy = require(`passport-local`).Strategy;
-const User = require(`../models/user`);
+const Admin = require(`../models/admin`);
 // const Post = require(`../models/posts`);
 
 // Authentication using passport
@@ -11,7 +11,7 @@ passport.use(new localStrategy({
     // }, function (email, password, done) {
     }, function (req , empId , password, done) {
         // Find the user and establish the identity
-        User.findOne({empId: empId} , (err , user)=>{
+        Admin.findOne({empId: empId} , (err , user)=>{
             if(err){
                 // console.log(`Error in finding user from passport
                 return done(err);
@@ -35,7 +35,7 @@ passport.serializeUser(function(user , done){
 
 // Deserializing the user from the key in the cookies
 passport.deserializeUser(function(id , done){
-    User.findById(id , (err , user)=>{
+    Admin.findById(id , (err , user)=>{
         if(err){
             console.log(`Error in deserializing the user`);
             return done(err);
