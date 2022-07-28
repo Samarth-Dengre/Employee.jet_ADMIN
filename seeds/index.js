@@ -48,13 +48,6 @@ const saveProjects = async (projects) => {
   const projectsArray = await projects();
   await Project.deleteMany({});
   await Project.insertMany(projectsArray);
-  // for (let i = 0; i < projectsArray.length; i++) {
-  //   for (let j = 0; j < projectsArray[i].team.length; j++) {
-  //     const newTodo = new ToDo();
-  //     await newTodo.save();
-  //     await User.findByIdAndUpdate( projectsArray[i].team[j], { projectsToDoList: newTodo._id }, { new: true } );
-  //   }
-  // }
   for (let i = 0; i < projectsArray.length; i++) {
     for (let j = 0; j < projectsArray[i].team.length; j++) {
       const user = await User.findById(projectsArray[i].team[j]);
