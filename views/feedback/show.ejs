@@ -19,7 +19,16 @@
         <ul id="responses-<%=question._id%>" class="list-group responses">
             <% for(let response of question.responses){%>
                 <li class="list-group-item">
-                    <%=response.byEmpObjId.name%> - <%=response.response%>
+                    <% if(question.type === 'rating'){%>
+                    <%=response.byEmpObjId.name%>
+                    <%} else if(question.type=== 'binary'){%>
+                    <%=response.byEmpObjId.name%>-<%=response.response%>
+                    <%}%>
+                    <% if(question.type=== 'rating') {%>
+                    <p class="starability-result" data-rating="<%=response.response%>">
+                        Rated: <%=response.response%> stars
+                    </p>
+                    <%}%>
                 </li>
                 <%} %>
             <!-- <li class="list-group-item">Cras justo odio</li>
