@@ -1,8 +1,11 @@
 .container{
     width: 84.2%!important;
     display: block !important;
+    overflow-y: scroll!important;
 }
-
+.container::-webkit-scrollbar{
+    display: none;
+}
 .card{
     margin:1rem;
     margin-bottom: 0rem;
@@ -16,3 +19,15 @@
 /* #responses{
     display: none;
 } */
+
+.responses{
+    display: none!important;
+}
+
+.responses-after-click{
+    display: block!important;
+}
+
+.card:last-child{
+    margin-bottom: 5rem;
+}

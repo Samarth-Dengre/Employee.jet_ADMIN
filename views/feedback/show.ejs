@@ -3,16 +3,20 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.js"></script>
 
 <div class="container">
-    <br><br><br><br<br><br>
-    <%=feedback.questions[0].responses%>
+
     <% for(let question of feedback.questions){%>
     <div class="card">
         <div class="card-body">
+            
             <h5 class="card-title"><%=question.question%></h5>
+                <% if(question.type === 'rating'){%>
             <p class="card-text">Average:4.5/5</p>
-            <a href="#" id="showResponses" class="btn btn-primary">Show Details</a>
+            <%} else if(question.type=== 'binary'){%>
+                <p class="card-text">90% voted YES</p>
+                <%}%>
+            <a href="#" id="showResponses-<%=question._id%>" class="btn btn-primary btnShowResponses">Show Details</a>
         </div>
-        <ul id="responses" class="list-group">
+        <ul id="responses-<%=question._id%>" class="list-group responses">
             <% for(let response of question.responses){%>
                 <li class="list-group-item">
                     <%=response.byEmpObjId.name%> - <%=response.response%>
@@ -37,5 +41,4 @@
         </div>
     </div> -->
     <% } %>
-    <%=feedback%>
 </div>
