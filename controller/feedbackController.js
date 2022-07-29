@@ -6,22 +6,6 @@ const Feedback = require('../models/feedback');
 const Question = require('../models/question');
 const Response = require('../models/response');
 
-module.exports.renderFeedback = async (req , res)=>{
-    if(!req.user){
-        return res.render('landingPage' , {
-            layout: 'blank_layout',
-            title: 'Employee.Jet | Admin'
-        });
-    }
-    //populate the feedback page
-    const admin = await Admin.findById(req.user._id);
-    return res.render('feedback/feedback', {
-        layout: 'blank_layout',
-        title: 'Feedback',
-        onPage: 'feedback',
-    });
-}
-
 
 module.exports.viewAllFeedbacks = async (req , res)=>{
     if(!req.user){
@@ -32,7 +16,8 @@ module.exports.viewAllFeedbacks = async (req , res)=>{
     }
     //populate the feedback page
     const admin = await Admin.findById(req.user._id);
-    const feedbacks = await Feedback.find({});
+    const feedbacks = await Feedback.find({}).populate({ path: 'questions', populate: { path: 'responses',}});
+    //console.log(feedbacks);
     return res.render('feedback/viewAll', {
         layout: 'blank_layout',
         title: 'View Feedbacks',
@@ -77,3 +62,23 @@ module.exports.renderCreateFeedback = async (req, res) => {
         admin: admin
     });
 }
+
+
+module.exports.createFeedback = async (req, res) => {
+    const feedback = new Feedback({
+        name: req.body.title,
+        description: req.body.description,
+    });
+    for (let i = 0; i < req.body.questions.length; i++){
+        if (req.body.questions[i].question && req.body.questions[i].type) {
+            const question = new Question({
+                question: req.body.questions[i],
+                type: req.body.types[i]
+            });
+            const newQuestion = await question.save();
+            feedback.questions.push(newQuestion._id);
+        }
+    }
+    const newFeedback = await feedback.save();
+    res.redirect(`/feedback/${newFeedback._id}`);
+};

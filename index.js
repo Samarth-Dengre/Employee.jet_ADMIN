@@ -2,8 +2,7 @@ const express = require("express");
 const port = 4000;
 const app = express();
 const db=require("./config/mongoose");
-const path=require("path");
-
+const path = require("path");
 
 app.use(express.urlencoded());
 app.use(express.json());

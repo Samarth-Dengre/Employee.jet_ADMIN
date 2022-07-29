@@ -84,6 +84,7 @@ const saveFeedback = async (feedback,questions) => {
   await Response.deleteMany({});
   const newFeedback = new Feedback(feedback);
   const responses2 = await responses();
+  newFeedback.isFilledBy.push(responses2[0].byEmpObjId);
   for (let i = 0; i < questions.length; i++) {
     const newResponse = new Response(responses2[0]);
     await newResponse.save();
