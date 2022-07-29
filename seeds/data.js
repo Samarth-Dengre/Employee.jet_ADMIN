@@ -122,19 +122,11 @@ module.exports.returnProjects = async () => {
         {
             name: "Project 1",
             description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda expedita maxime mollitia eos neque possimus aspernatur reprehenderit vero harum suscipit nesciunt, blanditiis, similique, quia veniam consectetur! Velit culpa corrupti nihil!",
-            supervisor: await getId("1"),
-            team: [
-                await getId("2"),
-                await getId("3"),
-            ],
-        },
-        {
-            name: "Project 2",
-            description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda expedita maxime mollitia eos neque possimus aspernatur reprehenderit vero harum suscipit nesciunt, blanditiis, similique, quia veniam consectetur! Velit culpa corrupti nihil!",
             supervisor: await getId("2"),
             team: [
                 await getId("4"),
-                await getId("5"),],
+                await getId("5"),
+                await getId("2")],
         }
     ]
 }

@@ -47,10 +47,10 @@ const saveToDoList = async (toDoListPvt) => {
 const saveProjects = async (projects) => {
   const projectsArray = await projects();
   await Project.deleteMany({});
-  await Project.insertMany(projectsArray);
-  for (let i = 0; i < projectsArray.length; i++) {
-    for (let j = 0; j < projectsArray[i].team.length; j++) {
-      const user = await User.findById(projectsArray[i].team[j]);
+  let projectsCopy =  await Project.insertMany(projectsArray);
+  for (let i = 0; i < projectsCopy.length; i++) {
+    for (let j = 0; j < projectsCopy[i].team.length; j++) {
+      const user = await User.findById(projectsCopy[i].team[j]);
       const toDoList = new ToDo({
         tasks: [],
       });
@@ -62,13 +62,13 @@ const saveProjects = async (projects) => {
       const newToDoList = await toDoList.save();
       const temp2 = await User.findByIdAndUpdate(
         user._id.toString(),
-        { projectsToDoList: newToDoList._id },
+        { projectsToDoList: newToDoList._id , projects: (projectsCopy[i]._id)},
         { new: true }
       );
     }
   }
   console.log("Saved Projects")
-};
+}
 
 const saveAdmins=async(admins)=>{
   await Admin.deleteMany({});
