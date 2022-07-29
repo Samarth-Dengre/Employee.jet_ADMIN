@@ -69,13 +69,17 @@ module.exports.createFeedback = async (req, res) => {
         name: req.body.title,
         description: req.body.description,
     });
+    // console.log(req.body);
+    // let questions = req.body.questions;
+    // console.log(questions.length);
     for (let i = 0; i < req.body.questions.length; i++){
-        if (req.body.questions[i].question && req.body.questions[i].type) {
+        if (req.body.questions[i] && req.body.types[i]) {
             const question = new Question({
                 question: req.body.questions[i],
                 type: req.body.types[i]
             });
             const newQuestion = await question.save();
+            //console.log(newQuestion);
             feedback.questions.push(newQuestion._id);
         }
     }
