@@ -82,3 +82,8 @@ module.exports.createFeedback = async (req, res) => {
     const newFeedback = await feedback.save();
     res.redirect(`/feedback/${newFeedback._id}`);
 };
+
+
+// Sending feedback form
+module.exports.sendFeedback = async (req, res) => {
+}

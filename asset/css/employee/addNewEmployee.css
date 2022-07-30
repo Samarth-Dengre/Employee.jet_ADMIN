@@ -1,0 +1,14 @@
+.container{
+    width: 84.2%!important;
+}
+
+form{
+    width: 100%;
+    background-color: white;
+    margin: 35px;
+    padding: 20px;
+    height: fit-content;
+    border-radius: 10px;
+    border: 2px solid grey;
+    box-shadow: 0 0 20px #050505;
+}
