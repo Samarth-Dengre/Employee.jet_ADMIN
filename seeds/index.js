@@ -83,7 +83,7 @@ const saveFeedback = async (feedback, questions) => {
   const responses2 = await responses();
   newFeedback.isFilledBy.push(responses2[0].byEmpObjId);
   for (let i = 0; i < questions.length; i++) {
-    const newResponse = new Response(responses2[0]);
+    const newResponse = new Response(responses2[i]);
     await newResponse.save();
     const question = new Question(questions[i]);
     question.responses.push(newResponse._id);

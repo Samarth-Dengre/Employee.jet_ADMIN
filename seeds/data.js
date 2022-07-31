@@ -180,6 +180,22 @@ module.exports.responses = async () => {
         {
             byEmpObjId: await getId("5"),
             response:"5"
+        },
+        {
+            byEmpObjId: await getId("5"),
+            response:"4"
+        },
+        {
+            byEmpObjId: await getId("5"),
+            response:"3"
+        },
+        {
+            byEmpObjId: await getId("5"),
+            response:"3"
+        },
+        {
+            byEmpObjId: await getId("5"),
+            response:"yes"
         }
     ]
 }
