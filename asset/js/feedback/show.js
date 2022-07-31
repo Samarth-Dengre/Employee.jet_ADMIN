@@ -4,10 +4,10 @@ $(document).ready(function () {
         $(response).click(function () {
             $('#responses-'+response.id.split('-')[1]).toggleClass("responses-after-click");
             let text = $(`#showResponses-${response.id.split('-')[1]}`).text();
-            if(text == "Show Details")
-                $(`#showResponses-${response.id.split('-')[1]}`).html("Hide Details");
+            if(text == "Show Responses")
+                $(`#showResponses-${response.id.split('-')[1]}`).html("Hide Responses");
             else
-                $(`#showResponses-${response.id.split('-')[1]}`).html("Show Details");
+                $(`#showResponses-${response.id.split('-')[1]}`).html("Show Responses");
         });
     }
 });

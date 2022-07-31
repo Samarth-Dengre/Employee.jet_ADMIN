@@ -31,3 +31,22 @@
 .card:last-child{
     margin-bottom: 5rem;
 }
+.showDetails{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 84%;
+    margin-left: 5rem;
+    height: fit-content;
+    margin-top:2rem;
+    
+}
+
+#generateDetailedReport{
+    margin-top: 2rem;
+    margin-left: 38%;
+    height: 3rem;
+    width: fit-content;
+    font-size: 18;
+    text-transform: none;
+}
