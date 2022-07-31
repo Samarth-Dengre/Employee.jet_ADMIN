@@ -50,7 +50,7 @@ passport.checkAuthentication = function(req , res , next){
         return next();
     }
     // If the user is not signed in
-    return res.redirect(`/users/login`);
+    return res.redirect(`/`);
 }
 
 // Setting authenticated user views
