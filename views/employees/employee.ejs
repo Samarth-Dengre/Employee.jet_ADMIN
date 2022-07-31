@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/css/employee/employee.css">
+<div class="container">
+    <div class="employees-container">
+            <h2>Employees</h2>
+        <div class="display-employee-cards-container">
+            <div class="card add-member-card" style="width: 18rem; height: 417px" >
+                <div class="card-body">
+                  <h5 class="card-title">
+                    Add New Member
+                  </h5>
+                  <div class="myTeam-card-info mt-3">
+                    <a href="/employees/renderAddNew"><i id="add-new-icon" class="fas fa-circle-plus add-icon"></i></a>
+                  </div>
+                </div>
+              </div>
+            <% for(let user of users){ %>
+                <% if(user.level !="1" ){ %>
+                    <div class="card" style="width: 18rem; height: 48%;">
+                    <a href="/employees/remove/<%=user._id%>" style="margin: 3px;">
+                        <i class="fas fa-trash-can"></i></a>
+                        <img class="card-img-top" style="width: 100px; border-radius: 50%; margin: auto"
+                            src="<%=user.avatar%>" alt="employee image">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;">
+                                <%=user.name%>
+                            </h5>
+                            <div class="myTeam-card-info">
+                                <p class="card-text">Employee ID: <%=user.empId%>
+                                </p>
+                                <p class="card-text">email: <%=user.email%>
+                                </p>
+                                <p class="card-text">Mobile No: <%=user.phnNo%>
+                                </p>
+                                <p class="card-text">Address: <%=user.address%>
+                                </p>
+                                <p class="card-text">Joined On: <%=user.joinedOn.toString().substring(0,15)%>
+                                </p>
+                                <p class="card-text">Designation: <%=user.designation%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                        <% } %>
+        </div>
+    </div>
+</div>

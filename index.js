@@ -9,6 +9,8 @@ app.use(express.json());
 app.set(`view engine` , `ejs`);
 app.set(`views`, path.join(__dirname, `views`));
 app.use(express.static(`./asset`));
+app.use(`/uploads` , express.static(__dirname + `/uploads`));
+
 
 
 const expressLayouts =  require(`express-ejs-layouts`);

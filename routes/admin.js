@@ -8,7 +8,10 @@ router.post(`/login` ,  passport.authenticate( `local` , {
 }) , adminController.login);
 
 // Admin logout
-router.get(`/logout`, adminController.logout);
+router.get(`/logout`, passport.checkAuthentication , adminController.logout);
+
+// Admin tab
+router.get(`/`, passport.checkAuthentication , adminController.adminTab);
 
 
 module.exports = router;
