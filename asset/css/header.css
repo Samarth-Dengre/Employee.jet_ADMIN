@@ -61,7 +61,7 @@ ul {
     width: 68.4%;
     background-color: wheat;
     position: absolute;
-    top: 70px;
+    top: 67px;
     overflow: hidden;
     display: flex;
     padding: 0px;
@@ -69,11 +69,13 @@ ul {
 }
 
 #sidebarMenu {
+    /* width:15.8%; */
     border: 2px solid grey;
     border-bottom: none;
 }
 
 #main-navbar {
+    max-height: 4.2rem;
     border: 2px solid grey;
     border-left: none;
     border-right: none;

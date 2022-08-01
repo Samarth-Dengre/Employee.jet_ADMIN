@@ -1,47 +1,66 @@
 <link rel="stylesheet" href="/css/employee/employee.css">
 <div class="container">
-    <div class="employees-container">
-            <h2>Employees</h2>
+
         <div class="display-employee-cards-container">
-            <div class="card add-member-card" style="width: 18rem; height: 417px" >
-                <div class="card-body">
-                  <h5 class="card-title">
-                    Add New Member
-                  </h5>
-                  <div class="myTeam-card-info mt-3">
-                    <a href="/employees/renderAddNew"><i id="add-new-icon" class="fas fa-circle-plus add-icon"></i></a>
-                  </div>
+            <div id="createNewCard" class="card" style="width: 18rem; height:20rem;">
+                <a href="/employees/renderAddNew">
+                <div class="card-body" style="padding-bottom: 0;">
+                  <img src="/images/plus_icon2.png" style="width: 6rem;height:6rem;margin-top:3.2rem;margin-left:4.7rem;">
+                  <!-- <p style="margin-top:1rem;margin-left:3.2rem;font-size: large;">Create New</p> -->
+                  <button class="btn btn-primary " style="margin-top:2.7rem ; margin-left:3.7rem;">Create New</button>
                 </div>
-              </div>
+              </a>
+                
+            </div>
             <% for(let user of users){ %>
                 <% if(user.level !="1" ){ %>
-                    <div class="card" style="width: 18rem; height: 48%;">
-                    <a href="/employees/remove/<%=user._id%>" style="margin: 3px;">
-                        <i class="fas fa-trash-can"></i></a>
+                    <div class="card" style="width: 18rem; height: fit-content;">
+                    
                         <img class="card-img-top" style="width: 100px; border-radius: 50%; margin: auto"
                             src="<%=user.avatar%>" alt="employee image">
-                        <div class="card-body">
-                            <h5 class="card-title" style="text-align: center;">
+                            <h5 class="card-title mt-2" style="text-align: center;">
                                 <%=user.name%>
                             </h5>
+                            <hr>
+                        <div class="card-body">
+                            
                             <div class="myTeam-card-info">
-                                <p class="card-text">Employee ID: <%=user.empId%>
+                                <p>
+                                <span class="font-weight-normal">Employee ID:</span>
+                                <span class="font-weight-light"><%=user.empId%></span>
                                 </p>
-                                <p class="card-text">email: <%=user.email%>
+                                <p>
+                                <span class="font-weight-normal">Email:</span>
+                                <span class="font-weight-light"><%=user.email%></span>
                                 </p>
-                                <p class="card-text">Mobile No: <%=user.phnNo%>
+                                <p>
+                                <span class="font-weight-normal">Mobile No:</span>
+                                <span class="font-weight-light"><%=user.phnNo%></span>
                                 </p>
-                                <p class="card-text">Address: <%=user.address%>
+                                <p>
+                                    <span class="font-weight-normal">Address:</span>
+                                    <span class="font-weight-light"><%=user.address%></span>
                                 </p>
-                                <p class="card-text">Joined On: <%=user.joinedOn.toString().substring(0,15)%>
-                                </p>
-                                <p class="card-text">Designation: <%=user.designation%>
-                                </p>
+                                <p>
+                                    <span class="font-weight-normal">Joined On:</span>
+                                    <span class="font-weight-light"><%=user.joinedOn.toString().substring(0,15)%></span>
+                                </p>    
+                                <p>
+                                    <span class="font-weight-normal">Designation:</span>
+                                    <span class="font-weight-light"><%=user.designation%></span>
+                                </p>    
+                               
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-info">More Details</button>
+                            <a href="/employees/remove/<%=user._id%>" style="margin: 3px;">
+                                <button type="button" class="btn btn-danger">Delete</button></a>
+                        </div>
+                        
                     </div>
                     <% } %>
                         <% } %>
         </div>
-    </div>
+    
 </div>

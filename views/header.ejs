@@ -16,15 +16,16 @@
                     class="dashboard-sidebar-items list-group-item list-group-item-action py-2 ripple <%= (onPage==='dashboard')?'active':''%>"
                     aria-current="true">
                     <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span></a>
-                <a href="/feedback"
-                    class="dashboard-sidebar-items list-group-item list-group-item-action py-2 ripple <%= (onPage==='feedback')?'active':''%>">
-                    <i class="fas fa-comments fa-fw me-3"></i><span>Feedback</span></a>
-                <a href="/admin"
-                    class="dashboard-sidebar-items list-group-item list-group-item-action py-2 ripple <%= (onPage==='Admin')?'active':''%>">
-                    <i class="fas fa-person-circle-check fa-fw me-3"></i><span>Admin</span></a>
                 <a href="/employees"
                     class="dashboard-sidebar-items list-group-item list-group-item-action py-2 ripple <%= (onPage==='employee')?'active':''%>">
-                    <i class="fas fa-plus fa-fw me-3"></i><span>Employees</span></a>
+                    <i class="fa-solid fa-users me-3"></i></i><span>Employees</span></a>
+                <a href="/feedback"
+                    class="dashboard-sidebar-items list-group-item list-group-item-action py-2 ripple <%= (onPage==='feedback')?'active':''%>">
+                    <i class="fas fa-solid fa-comment-dots me-3"></i><span>Feedbacks</span></a>
+                <a href="/admin"
+                    class="dashboard-sidebar-items list-group-item list-group-item-action py-2 ripple <%= (onPage==='Admin')?'active':''%>">
+                    <i class="fa-solid fa-diagram-project me-3"></i></i><span>Projects</span></a>
+
                 <a href="/requests"
                     class="dashboard-sidebar-items list-group-item list-group-item-action py-2 ripple <%= (onPage==='requests')?'active':''%>">
                     <i class="fas fa-arrow-right-arrow-left fa-fw me-3"></i><span>Requests</span></a>
@@ -45,9 +46,13 @@
 
             <!-- Brand -->
             <a class="navbar-brand" href="#">
-                <p style="margin:2px; padding:2px">Employee.jet</p>
-                <img class="rounded-circle" src="/images/logo.png" height="45" alt="MDB Logo" loading="lazy" />
+
+                <img class="rounded-circle mt-3" src="https://i.imgur.com/CXQmsmF.png" height="70" alt="MDB Logo"
+                    loading="lazy" />
+                <p class="mt-4" style="padding:2px">YourCompany</p>
             </a>
+            <!-- <img src="" class="logo"> -->
+
 
             <!-- Right links -->
             <ul class="navbar-nav ms-auto d-flex flex-row">

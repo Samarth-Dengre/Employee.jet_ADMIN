@@ -21,3 +21,12 @@
 .ml-6{
     margin-left:3.8rem;
 }
+
+#createNewFeedback{
+    margin-top: 3.7rem;
+}
+
+#createNewFeedback button{
+    margin-top: 2.5rem;
+    margin-left: 3.5rem;
+}
