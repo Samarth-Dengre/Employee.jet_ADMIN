@@ -13,7 +13,7 @@ module.exports.viewAllProjects = async (req, res) => {
     return res.render('project/viewAll' , {
         layout: 'blank_layout',
         projects: projects,
-        title: 'Admin | Admin Panel',
+        title: 'Admin | Projects',
         onPage: `projects`,
     });
     } catch (error) {

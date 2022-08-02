@@ -14,7 +14,7 @@
     background-color: white;
     height: 570px;
     overflow-y: scroll;
-    box-shadow: 0 0 20px #1e1d1d;
+    border-radius: 10px;
 
 }
 .ongoing-projects-container::-webkit-scrollbar{
