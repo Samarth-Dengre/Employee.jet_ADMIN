@@ -36,14 +36,37 @@ module.exports.showFeedback = async (req, res) => {
         });
     }
     const feedback = await Feedback.findById(req.params.id).populate({ path: 'questions', populate: { path: 'responses', populate: { path: 'byEmpObjId' } } });
+    let averages=[]
+    for (let i = 0; i < feedback.questions.length; i++) {
+        if (feedback.questions[i].responses.length > 0) {
+            let sum = 0;
+            let yes = 0;
+            for (let j = 0; j < feedback.questions[i].responses.length; j++) {
+                //console.log(feedback.questions[i].responses[j].response);
+                if (feedback.questions[i].type === 'rating')
+                    sum += parseInt(feedback.questions[i].responses[j].response);
+                else if(feedback.questions[i].responses[j].response==='yes') 
+                    yes++;
+                
+            } 
+            if (feedback.questions[i].type == 'rating')
+                averages.push(sum / feedback.questions[i].responses.length);
+            else
+                averages.push((yes / feedback.questions[i].responses.length) * 100);
+        }
+        else
+            averages.push(0);
+    }
     //console.log(feedback);
+    //console.log(averages);
     const admin = await Admin.findById(req.user._id);
     return res.render('feedback/show', {
         layout: 'blank_layout',
         title: 'View Feedback',
         onPage: 'feedback',
         admin: admin,
-        feedback: feedback
+        feedback: feedback,
+        averages:averages
     });
 }
 

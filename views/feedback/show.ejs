@@ -14,9 +14,19 @@
             
             <h5 class="card-title"><%=question.question%></h5>
                 <% if(question.type === 'rating'){%>
-            <p class="card-text">Average:4.5/5</p>
+                    <% if (averages[i]!=0 ){%>   
+                        <p class="card-text">Average: <%=averages[i]%>/5</p>
+                        <%}else{%>
+            <p class="card-text">Average: No Responses</p>
+            <% } %>
             <%} else if(question.type=== 'binary'){%>
-                <p class="card-text">90% voted YES</p>
+                <% if (averages[i]!=0 ){%>   
+                    <p class="card-text"><%=averages[i]%>% voted 'YES'</p>
+                    <%}else if(feedback.questions[i].responses.length===0){%>
+        <p class="card-text">No Responses</p>
+        <% }else { %>
+            <p class="card-text">0% voted 'YES'</p>
+            <% } %>
                 <%}%>
                 <div class="show-details-buttons">
                     <a href="#" id="showResponses-<%=question._id%>" class="btn btn-primary btnShowResponses">Show Responses</a>
