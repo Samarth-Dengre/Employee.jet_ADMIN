@@ -5,4 +5,7 @@ const projectController = require(`../controller/projectController`);
 // Rendering requests page
 router.get('/', passport.checkAuthentication ,  projectController.viewAllProjects);
 
-module.exports = router;
+// Showing project details
+router.get('/showDetails/:id', passport.checkAuthentication , projectController.showProject);
+
+module.exports = router

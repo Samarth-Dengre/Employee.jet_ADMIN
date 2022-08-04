@@ -7,7 +7,10 @@ router.get('/create',passport.checkAuthentication , feedbackController.renderCre
 router.post('/create', passport.checkAuthentication ,feedbackController.createFeedback);    //route to create feedback
 router.get('/:id', passport.checkAuthentication ,feedbackController.showFeedback);    //route to show particular feedback
 
-// Send feedback form to members of a particular project
+// Decide which feedback to show
 router.get(`/sendFeedback/:id`, passport.checkAuthentication , feedbackController.sendFeedback);
+
+// Send feedback to employees
+router.get(`/sendTo` , passport.checkAuthentication , feedbackController.sendTo);
 
 module.exports = router;

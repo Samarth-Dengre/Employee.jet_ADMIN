@@ -14,4 +14,7 @@ router.post('/addNew', passport.checkAuthentication ,  employeeController.addNew
 // removing employee from organization
 router.get('/remove/:id', passport.checkAuthentication ,  employeeController.remove);
 
+// Show employee profile
+router.get('/showDetails/:id', passport.checkAuthentication ,  employeeController.showProfile);
+
 module.exports = router;

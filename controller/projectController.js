@@ -21,3 +21,21 @@ module.exports.viewAllProjects = async (req, res) => {
         return res.redirect('/');
     }
 }
+
+// Showing project details
+module.exports.showProject = async (req, res) => {
+    try {
+        const project = await Project.findById(req.params.id)
+        .populate(`supervisor`)
+        .populate('team');
+        return res.render('project/show' , {
+            layout: 'blank_layout',
+            title: 'Admin | Project Details',
+            onPage: `projects`,
+            project: project,
+        });
+    } catch (error) {
+        console.log("Error in rendering admin tab: ", error);
+        return res.redirect('/projects');
+    }
+}

@@ -6,7 +6,6 @@
                 <a href="/employees/renderAddNew">
                 <div class="card-body" style="padding-bottom: 0;">
                   <img src="/images/plus_icon2.png" style="width: 6rem;height:6rem;margin-top:3.2rem;margin-left:4.7rem;">
-                  <!-- <p style="margin-top:1rem;margin-left:3.2rem;font-size: large;">Create New</p> -->
                   <button class="btn btn-primary " style="margin-top:2.7rem ; margin-left:3.7rem;">Create New</button>
                 </div>
               </a>
@@ -53,7 +52,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="button" class="btn btn-info">More Details</button>
+                            <a href="/employees/showDetails/<%=user._id%>" class="btn btn-info">More Details</a>
                             <a href="/employees/remove/<%=user._id%>" style="margin: 3px;">
                                 <button type="button" class="btn btn-danger">Delete</button></a>
                         </div>

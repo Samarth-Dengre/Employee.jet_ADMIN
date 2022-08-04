@@ -114,3 +114,15 @@ module.exports.remove = async (req, res) => {
         return res.redirect('/employees');
     }
 }
+
+
+// Showing employee profile
+module.exports.showProfile = async (req, res) => {
+    const user = await User.findById(req.params.id);
+    return res.render('employees/profile', {
+        layout: 'layout',
+        onPage: 'employee',
+        title: 'Profile',
+        user: user
+    });
+}
