@@ -127,6 +127,8 @@ module.exports.returnProjects = async () => {
                 await getId("4"),
                 await getId("5"),
                 await getId("2")],
+            tags: ["NodeJS", "ExpressJs", "Bootstrap"],
+            
         }
     ]
 }

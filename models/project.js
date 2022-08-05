@@ -30,7 +30,12 @@ const projectSchema = new mongoose.Schema({
     finishedAt: {
         type: Date,
         default: null
-    }
+    },
+    tags: [
+        {
+            type: String
+        }   
+    ],
 }, {   
     timestamps: true
 

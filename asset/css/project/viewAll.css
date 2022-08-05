@@ -26,6 +26,8 @@
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll!important;
+    margin-left:1rem;
+    margin-top:1rem;
 }
 .display-project-cards-container::-webkit-scrollbar{
     display: none;
@@ -40,13 +42,11 @@
     align-items: center;
     flex-direction: column;
     line-height: 1.5rem;
-    border: 1px solid rgb(104, 103, 103);
-    box-shadow: 5px 10px 8px #888888;
     border-radius: 12px;
 }
 
 .project-description{
-    height: 200px;
+    height: fit-content;
     overflow-y: scroll;
     margin: 13px 5px;
 }

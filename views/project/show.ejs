@@ -3,17 +3,17 @@
 <div class="content">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-9 mt-3 ml-5">
                 <div class="card-box task-detail">
                     <div class="media mt-0 m-b-30"><img class="d-flex mr-3 rounded-circle" alt="64x64"
-                            src="<%=project.supervisor.avatar%>" style="width: 48px; height: 48px;">
+                            src="../<%=project.supervisor.avatar%>" style="width: 72px; height: 72px;">
                         <div class="media-body">
-                            <h5 class="media-heading mb-0 mt-0">
+                            <h5 class="media-heading mb-0 mt-2">
                                 <%=project.supervisor.name%>
-                            </h5><span class="badge badge-danger">Supervisor</span>
+                            </h5><span class="badge badge-danger mt-1">Supervisor</span>
                         </div>
                     </div>
-                    <h4 class="m-b-20"><%=project.name%></h4>
+                    <h4 class="m-b-20 mt-4"><%=project.name%></h4>
                     <p class="text-muted">
                         <%=project.description%>
                     </p>
@@ -38,11 +38,12 @@
                     <div class="clearfix"></div>
                     <div class="task-tags mt-4">
                         <h5 class="">Tags</h5>
-                        <div class="bootstrap-tagsinput"><span class="tag label label-info">Amsterdam<span
-                                    data-role="remove"></span></span> <span class="tag label label-info">Washington<span
-                                    data-role="remove"></span></span> <span class="tag label label-info">Sydney<span
-                                    data-role="remove"></span></span>
-                                    <p>YAHA PE SKILSS REQUIRED OR PURPOSE JAISE TAGS DAAL DENGE</p>
+                        <div class="bootstrap-tagsinput mt-3">
+                            <% for(let tag of project.tags){ %>
+                                    <span class="tag label label-tag"><%=tag%><span data-role="remove"></span></span>
+                                    
+                                 <%}%>
+                        
                         </div>
 
                     </div>
@@ -50,18 +51,24 @@
                         <h5 class="">Members</h5>
                         <div class="files-list">
                             <%for(let team of project.team){%>
-                            <div class="file-box">
-                                <a href="/employees/showDetails/<%=team._id%>"><img src="<%=team.avatar%>"
+                            <div class="file-box m-2">
+                                <a href="/employees/showDetails/<%=team._id%>"><img src="../<%=team.avatar%>"
                                         class="img-responsive img-thumbnail" alt="attached-img"></a>
-                                <p class="font-13 mb-1 text-muted"><small><%=team.name%></small></p>
+                                <p class="font-13 mb-1 text-muted ml-2"><small><%=team.name%></small></p>
                             </div>
                             <%}%>
                         </div>
                     </div>
+                    
+                    <h5 class="">Feedbacks</h5>
+                    <a href="feedback/sendFeedback/<%= project._id %>" class="btn btn-primary mt-3">Send Feedback Form To
+                        Members</a>
                 </div>
+                
             </div>
+            
             <!-- end col -->
-            <div class="col-lg-4">
+            <!-- <div class="col-lg-3 mr-2 mt-3">
                 <div class="card-box">
                     <h4 class="header-title m-b-30">Comments (5)</h4>
                     <div>
@@ -141,7 +148,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- end col -->
         </div>
         <!-- end row -->
