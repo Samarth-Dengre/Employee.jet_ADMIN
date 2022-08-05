@@ -11,6 +11,6 @@ router.get('/:id', passport.checkAuthentication ,feedbackController.showFeedback
 router.get(`/sendFeedback/:id`, passport.checkAuthentication , feedbackController.sendFeedback);
 
 // Send feedback to employees
-router.get(`/sendTo` , passport.checkAuthentication , feedbackController.sendTo);
+router.get(`/sendToEmployees` , passport.checkAuthentication , feedbackController.sendToEmployees);
 
 module.exports = router;

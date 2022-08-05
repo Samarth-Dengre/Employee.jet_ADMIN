@@ -1,5 +1,4 @@
 const mongoose = require(`mongoose`);
-const ToDo = require(`../models/toDo`);
 // For uploading files
 const multer = require(`multer`);
 const path = require(`path`);
@@ -77,7 +76,7 @@ const userSchema = new mongoose.Schema({
     },
     feedback: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Feedback',
+        ref: 'Feedback'
     }]
 } , {
     // Keep the created and updated time

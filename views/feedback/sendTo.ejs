@@ -18,8 +18,7 @@
         <div class="card-body" style="padding-bottom: 0;">
           <h5 class="card-title"><%=feedback.name%></h5>
           <p class="card-text"><%=feedback.description%></p>
-          <a href="/feedback/sendTo/?pid=<%=project._id%>&fid=<%=feedback._id%>" class="btn btn-primary">SEND</a>
-          
+          <a href="/feedback/sendToEmployees/?pid=<%=project.id%>&fid=<%=feedback.id%>">SEND</a>
         </div>
         <div class="card-footer text-muted">
             <p class="card-text mt-2"><small class="text-muted" >Created : <%=feedback.createdAt.toString().substring(0,16)%></small></p>

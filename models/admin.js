@@ -1,5 +1,4 @@
 const mongoose = require(`mongoose`);
-const ToDo = require(`../models/toDo`);
 // For uploading files
 const multer = require(`multer`);
 const path = require(`path`);

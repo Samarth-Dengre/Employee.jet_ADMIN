@@ -2,6 +2,7 @@ const Admin = require(`../models/admin`);
 const Feedback = require('../models/feedback');
 const Question = require('../models/question');
 const Project = require('../models/project');
+const User = require('../models/user');
 
 
 module.exports.viewAllFeedbacks = async (req, res) => {
@@ -107,37 +108,36 @@ module.exports.createFeedback = async (req, res) => {
 
 // Rendering feedback form  so that admin can decide which feedback to send to which employee
 module.exports.sendFeedback = async (req, res) => {
-    const feedback = await Feedback.find({});
+    const feedbacks = await Feedback.find({}).populate({ path: 'questions', populate: { path: 'responses', } });
     const project = await Project.findById(req.params.id);
-    return res.render(`feedback/sendTo`,{
-            layout: 'blank_layout',
-            title: 'Send Feedback',
-            onPage: 'feedback',
-            project: project,
-            feedbacks: feedback
-        });
+    return res.render(`feedback/sendTo`, {
+        layout: 'blank_layout',
+        title: 'Send Feedback',
+        onPage: 'feedback',
+        project: project,
+        feedbacks: feedbacks
+    });
 }
 
 // Sending feedback to employees
-module.exports.sendTo = async (req, res) => {
+module.exports.sendToEmployees = async (req, res) => {
+    // return res.redirect(`/`);
     try {
-        
-    const projectId = req.query.pid;
-    const feedbackId = req.query.fid;
-    const project = await Project.findById(projectId).populate('team');
-    console.log("HEHEHEEEH")
-    const feedback = await Feedback.findById(feedbackId);    
+        console.log("bhsvcbvxjgvksld");
+        const project = await Project.findById(req.query.pid).populate('team');
+        console.log("HEHEHEEEH")
+        const feedback = await Feedback.findById(req.query.fid);
 
-    for(let employee of project.team){
-        console.log("Me feedback hu: ",feedback);
-        console.log("Me employee hu: " , employee);
-        await employee.feedback.push(feedback);
-        await employee.save();
-    }
+        for (let employee of project.team) {
+            console.log("Me feedback hu: ", feedback);
+            console.log("Me employee hu: ", employee);
+            await employee.feedback.push(feedback);
+            await employee.save();
+        }
 
-    return res.redirect(`/projects`);
+        return res.redirect(`back`);
     } catch (error) {
-        console.log(`Error in sending feedback to the users: ${error}`);
-        return res.redirect(`/projects`);
+        console.log(`Error in sending feedback to the users:`, error);
+        return res.redirect(`back`);
     }
 }
