@@ -1,13 +1,12 @@
-const mongoose = require("mongoose");
 const User = require("../models/user");
 const ToDo = require("../models/toDo");
-const db = require("../config/mongoose");
 const Task = require("../models/task");
 const Project = require("../models/project");
-const Admin = require("../models/admin")
+const Admin = require("../models/admin");
 const Feedback = require("../models/feedback");
 const Question = require("../models/question");
 const Response = require("../models/response");
+const connectDB = require("../config/mongoose");
 
 const users = require("./data").users;
 const toDoListPvt = require("./data").todoDataPvt;
@@ -20,8 +19,8 @@ const responses = require("./data").responses;
 const saveUsers = async (users) => {
   await User.deleteMany({});
   const Users = await User.insertMany(users);
-  console.log("Saved Users")
-}
+  console.log("Saved Users");
+};
 
 const saveToDoList = async (toDoListPvt) => {
   await ToDo.deleteMany({});
@@ -59,21 +58,23 @@ const saveProjects = async (projects) => {
       const newToDoList = await toDoList.save();
       const temp2 = await User.findByIdAndUpdate(
         user._id.toString(),
-        { projectsToDoList: newToDoList._id, projects: (projectsCopy[i]._id), supervisor: projectsCopy[i].supervisor },
+        {
+          projectsToDoList: newToDoList._id,
+          projects: projectsCopy[i]._id,
+          supervisor: projectsCopy[i].supervisor,
+        },
         { new: true }
       );
     }
   }
-  console.log("Saved Projects")
-}
+  console.log("Saved Projects");
+};
 
 const saveAdmins = async (admins) => {
   await Admin.deleteMany({});
   await Admin.insertMany(admins);
-  console.log("Saved Admins")
-}
-
-
+  console.log("Saved Admins");
+};
 
 const saveFeedback = async (feedback, questions) => {
   await Feedback.deleteMany({});
@@ -91,8 +92,8 @@ const saveFeedback = async (feedback, questions) => {
     newFeedback.questions.push(newQuestion._id);
   }
   newFeedback.save();
-  console.log("Saved Feedback")
-}
+  console.log("Saved Feedback");
+};
 
 const seed = async () => {
   await saveUsers(users);
@@ -100,6 +101,6 @@ const seed = async () => {
   await saveProjects(projects);
   await saveAdmins(admins);
   await saveFeedback(feedback, questions);
-}
+};
 
 seed();
